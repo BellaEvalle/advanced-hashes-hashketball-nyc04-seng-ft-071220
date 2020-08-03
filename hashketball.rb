@@ -1,9 +1,6 @@
 # Write your code below game_hash
 require 'pry'
-<<<<<<< HEAD
-=======
 
->>>>>>> 6fe4501eb019c759fa28c125b80ad1e06d99032c
 def game_hash
   {
     home: {
@@ -133,43 +130,25 @@ end
 
 # Write code here
 
-<<<<<<< HEAD
-def num_points_scored(player_search)
-  game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
-      if player[:player_name] == player_search
-        return player[:points]
-      end
-    end
+def num_points_scored(player_name_argument)
+  found_player_hash = player_stats(player_name_argument)
+  found_player_hash[:points]
+end 
+
+def player_stats(player_name_arg)
+ get_me_all_players_please().find do |player_hash|
+    player_hash[:player_name] == player_name_arg
   end
 end
 
-def shoe_size (name)
-  game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
-      if player[:player_name] == name
-        return player[:shoe]
-      end
-    end
-  end
+def get_me_all_players_please
+  all_players = []
+ game_hash.each do |home_away, team_hash_info|
+   all players += team_hash_info[:players]
+ end
+ all_players
 end
 
-def team_colors(team_input)
-  if team_input.downcase == "charlotte hornets" 
-    return game_hash[:away][:colors]
-  else return game_hash[:home][:colors]
-  end
-end
 
-def team_names
-  game_hash.map do |team, team_info|
-    team_info[:team_name]
-  end
-end
-=======
-def num_points_scored (player_search)
-  game_hash.each do |keys, team_info|
-binding.pry
-  end
-end
->>>>>>> 6fe4501eb019c759fa28c125b80ad1e06d99032c
+
+
